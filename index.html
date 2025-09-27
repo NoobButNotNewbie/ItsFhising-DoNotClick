@@ -1,52 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub Pages Web</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        main {
-            padding: 2rem;
-            text-align: center;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Demo</title>
+<style>
+  body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; }
+  .login-box { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
+  input { width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 4px; border: 1px solid #ccc; }
+  button { width: 100%; padding: 0.5rem; border: none; border-radius: 4px; background: #007bff; color: white; cursor: pointer; }
+  button:hover { background: #0056b3; }
+  .msg { color: red; text-align: center; margin-top: 1rem; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Web</h1>
-    </header>
-    <main>
-        <p>This is a simple GitHub Pages demo web.</p>
-        <p>Check out <a href="https://github.com/">GitHub</a> for more.</p>
-    </main>
-    <footer>
-        &copy; 2025 My Web
-    </footer>
+
+<div class="login-box">
+  <h2>Đăng nhập</h2>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Mật khẩu" required>
+  <button onclick="login()">Đăng nhập</button>
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const msg = document.getElementById("msg");
+
+  // giả lập login: email=admin@example.com, password=123456
+  if(email === "admin@example.com" && password === "123456") {
+    msg.style.color = "green";
+    msg.textContent = "Đăng nhập thành công!";
+  } else {
+    msg.style.color = "red";
+    msg.textContent = "Email hoặc mật khẩu không đúng!";
+  }
+}
+</script>
+
 </body>
 </html>
