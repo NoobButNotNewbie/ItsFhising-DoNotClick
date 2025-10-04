@@ -23,21 +23,45 @@
   <div class="msg" id="msg"></div>
 </div>
 
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const msg = document.getElementById("msg");
+  // --- Thông tin Supabase (điền thật khi có) ---
+  const SUPABASE_URL = "https://zwgeefuthnmikqbsoszl.supabase.co";
+  const SUPABASE_KEY = "zwgeefuthnmikqbsoszl";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // giả lập login: email=admin@example.com, password=123456
-  if(email === "admin@example.com" && password === "123456") {
-    msg.style.color = "green";
-    msg.textContent = "Đăng nhập thành công!";
-  } else {
-    msg.style.color = "red";
-    msg.textContent = "Email hoặc mật khẩu không đúng!";
+  // --- Biến đếm số lần thử ---
+  let failCount = 0;
+  const randomFailTimes = Math.floor(Math.random() * 2) + 1; // 1 hoặc 2 lần fail đầu
+
+  async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const msg = document.getElementById("msg");
+
+    // Giả lập tài khoản thật
+    const trueEmail = "admin@example.com";
+    const truePass = "123456";
+
+    // Nếu chưa qua số lần fail ngẫu nhiên => ép thất bại
+    if (failCount < randomFailTimes) {
+      failCount++;
+      msg.style.color = "red";
+      msg.textContent = "Email hoặc mật khẩu không đúng! (Lần " + failCount + ")";
+      return;
+    }
+
+    // Sau khi hết số lần fail ngẫu nhiên → kiểm tra thật
+    if (email === trueEmail && password === truePass) {
+      msg.style.color = "green";
+      msg.textContent = "Đăng nhập thành công!";
+      console.log("✅ Đăng nhập ok sau", failCount, "lần sai đầu.");
+    } else {
+      msg.style.color = "red";
+      msg.textContent = "Email hoặc mật khẩu không đúng!";
+    }
   }
-}
 </script>
 
 </body>
