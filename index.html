@@ -40,28 +40,17 @@
     const password = document.getElementById("password").value;
     const msg = document.getElementById("msg");
 
-    // Giả lập tài khoản thật
-    const trueEmail = "admin@example.com";
-    const truePass = "123456";
-
     // Nếu chưa qua số lần fail ngẫu nhiên => ép thất bại
     if (failCount < randomFailTimes) {
       failCount++;
       msg.style.color = "red";
-      msg.textContent = "Email hoặc mật khẩu không đúng! (Lần " + failCount + ")";
+      msg.textContent = "Email hoặc mật khẩu không đúng!";
       return;
-    }
-
-    // Sau khi hết số lần fail ngẫu nhiên → kiểm tra thật
-    if (email === trueEmail && password === truePass) {
+    }else {
       msg.style.color = "green";
       msg.textContent = "Đăng nhập thành công!";
-      console.log("✅ Đăng nhập ok sau", failCount, "lần sai đầu.");
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Email hoặc mật khẩu không đúng!";
-    }
   }
+    
 </script>
 
 </body>
