@@ -2,7 +2,7 @@
 const SUPABASE_URL = 'https://your-project.supabase.co'; // <-- thay bằng của bạn
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3Z2VlZnV0aG5taWtxYnNvc3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk1NzAzNjQsImV4cCI6MjA3NTE0NjM2NH0.aS4kFcs67veQXQnYhBJIS2fXFup1klDhaesyu6yHrD4'; // <-- thay bằng anon key của bạn
 
-const supabase = supabaseLib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // DOM
 const loginBox = document.getElementById('loginBox');
